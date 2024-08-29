@@ -1,0 +1,39 @@
+[ Infrastructure Layer (On-premises or Cloud) ]
+|
+|-- [ Kubernetes Cluster ]
+|    |  
+|    |-- [ Control Plane (Master Nodes) ]
+|    |       |-- API Server
+|    |       |-- etcd
+|    |       |-- Controller Manager
+|    |       |-- Scheduler
+|    |
+|    |-- [ Worker Node 1 ]
+|    |       |-- Kubelet
+|    |       |-- Kube-Proxy
+|    |       |-- Pod: Hello-World Container (Replica 1)
+|    |
+|    |-- [ Worker Node 2 ]
+|    |       |-- Kubelet
+|    |       |-- Kube-Proxy
+|    |       |-- Pod: Hello-World Container (Replica 2)
+|    |
+|    |-- [ Horizontal Pod Autoscaler (HPA) ]
+|    |
+|    |-- [ Service (LoadBalancer/ClusterIP) ]
+|    |       |-- Traffic Distribution to Pod Replicas
+|    |
+|    |-- [ Ingress Controller (NGINX/Traefik) ]
+|            |-- TLS Termination
+|            |-- External HTTP/HTTPS Traffic Handling
+|
+|-- [ Network Hardening (Network Policies) ]
+|    |-- Restricted Traffic Flows
+|
+|-- [ Monitoring Stack ]
+|    |-- Prometheus
+|    |-- Grafana
+|
+|-- [ CI/CD Pipeline ]
+      |-- Code Commit -> Build -> Test -> Deploy -> Monitor
+      |-- Automated Deployment to Kubernetes API
